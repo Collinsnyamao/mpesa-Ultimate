@@ -29,7 +29,7 @@ const urla = "http://157.230.233.236:3000/callback";
 // const instance = new Mpesa({ consumerKey: 'test', consumerSecret: 'test', environment: 'production' })
 mpesaApi
     .lipaNaMpesaOnline(
-        254715024545,
+        254724512285,
         2,
         urla,
         'test'
