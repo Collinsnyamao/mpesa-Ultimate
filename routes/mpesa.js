@@ -30,7 +30,7 @@ const urla = "http://157.230.233.236:3000/callback";
 mpesaApi
     .lipaNaMpesaOnline(
         254715024545,
-        5,
+        2,
         urla,
         'test'
     )
