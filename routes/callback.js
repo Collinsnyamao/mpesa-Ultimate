@@ -8,7 +8,9 @@ router.get('/',function (req,res) {
 });
 
 router.post('/',function (req,res) {
-    console.log(req.body);
+    console.log('1111111 :',req.body.ResultCode);
+    console.log('222222 :',req.body.stkCallback.ResultCode);
+
     res.send('mpesa api');
 });
 

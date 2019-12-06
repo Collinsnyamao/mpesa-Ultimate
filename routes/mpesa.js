@@ -10,6 +10,7 @@ const mpesaApi = new Mpesa({
     lipaNaMpesaShortPass: 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
     securityCredential: 'Safaricom1720!'
 });
+const vars = require('./variables');
 
 
 
@@ -27,25 +28,34 @@ const mpesaApi = new Mpesa({
 const urla = "http://157.230.233.236:3000/callback";
 // another instance
 // const instance = new Mpesa({ consumerKey: 'test', consumerSecret: 'test', environment: 'production' })
-mpesaApi
-    .lipaNaMpesaOnline(
-        254724512285,
-        2,
-        urla,
-        'test'
-    )
-    .then((result) => {
-        //do something
-        console.log(result);
-    })
-    .catch((err) => {
-        // retry?
+function lipanampesa(number,amount,reference){
+    mpesaApi
+        .lipaNaMpesaOnline(
+            number,
+            amount,
+            urla,
+            reference
+        )
+        .then((result) => {
+            //do something
+            console.log(result);
+        })
+        .catch((err) => {
+            // retry?
 
-        console.log(err);
-    });
+            console.log(err);
+        });
+}
 
+const title3 = 'This title';
 router.get('/',function (req,res) {
-    res.send('mpesa api');
+    res.render('lipanampesa',{ title : vars.title , headtext: vars.headtext, lipa : vars.lipa,hidden_form : '',hidden_requesting : 'hidden'});
+});
+
+router.post('/',function (req,res) {
+
+    lipanampesa(req.body.phone,req.body.amount,'eureka');
+    res.render('lipanampesa',{ title : vars.title , headtext: 'success', lipa: vars.lipa , hidden_form : 'hidden', hidden_requesting : '', current_status: 'Requesting...'});
 });
 
 
